@@ -36,12 +36,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-button {
-  all: initial;
-  background-color: black;
-  color: white;
-  padding: 1rem;
-}
-</style>

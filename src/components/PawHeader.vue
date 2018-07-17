@@ -1,7 +1,10 @@
 <template>
   <header>
+    <button>
+      <img src="../assets/icons/menu.svg"/>
+    </button>
     <router-link to="/">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaJkf4d44FoRZJpT22lL89QZu9itmLPWJPJhLjeCrBgZgzbOa">
+      Pawlove
     </router-link>
   </header>
 </template>
@@ -13,12 +16,28 @@ export default {
 </script>
 
 <style scoped>
+button {
+  all: initial;
+  height: 16px;
+  width: 20px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+a {
+  color: #4A4A4A;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
 header {
-  align-items: center;
-  background-color: black;
+  height: 40px;
+  position: relative;
   display: flex;
-  height: 5rem;
-  padding: 0 1rem;
+  justify-content: center;
+  align-items: center;
 }
 img {
   width: 4rem;

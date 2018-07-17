@@ -1,17 +1,18 @@
 <template>
   <div class="paw-success-card">
-    <img :src="imageUrl" alt="" />
+    <div class="img-container">
+      <img src="../assets/img/love-history.png" alt="" />
+      <div class="title">{{ title }}</div>
+    </div>
     <div class="content">
-      <div class="title">
-        {{ title }}
-      </div>
-      <div class="petName">
-        {{ petName }}
-      </div>
-      <div class="ownerName">
-        {{ ownerName }}
+      <div class="association">
+        <img :src="associationImageUrl" alt="" />
+        <p> {{ association }}
+          <span class="date">{{ time }}</span>
+        </p>
       </div>
       <p class="description">
+        <strong>Esto es lo que nos cuenta {{ ownerName }}:</strong>
         {{ description }}
       </p>
     </div>
@@ -21,25 +22,34 @@
 <script>
 const successCases = [
   {
-    title: 'Antonio encuentra el amor',
-    petName: 'Antonio',
-    ownerName: 'Pepito',
-    description: 'Marshmallow sweet apple pie gummies danish macaroon macaroon chupa chups liquorice. Sugar plum chocolate cake sweet roll.',
-    imageUrl: 'https://razas-deperros.com/wp-content/uploads/2018/02/Golden-retriever-portada.jpg'
+    title: '¡Hank y Elisabeth ya están en casa juntos!',
+    association: 'Asociación GATA',
+    associationImageUrl: 'Asociación GATA',
+    time: '4546545646',
+    petName: 'Hank',
+    ownerName: 'Elisabeth',
+    description: 'Hace dos días que Hank está en casa y ya es como si llevara toda la vida aquí. Se ha adueñado del sofá grande y mis hijos están ...',
+    imageUrl: '../assets/img/love-history.png'
   },
   {
     title: 'Zoe y Samuel, amantes de la montaña',
+    association: 'Asociación GATA',
+    associationImageUrl: 'Asociación GATA',
+    time: '4546545646',
     petName: 'Zoe',
     ownerName: 'Samuel',
     description: 'Marshmallow sweet apple pie gummies danish macaroon macaroon chupa chups liquorice. Sugar plum chocolate cake sweet roll.',
-    imageUrl: 'https://www.losanimales.org/wp-content/uploads/2018/03/Chow-blanco.jpg'
+    imageUrl: '../assets/img/love-history.png'
   },
   {
     title: 'Coco, como caído del cocotero',
+    association: 'Asociación GATA',
+    associationImageUrl: 'Asociación GATA',
+    time: '4546545646',
     petName: 'Coco',
     ownerName: 'Marina',
     description: 'Marshmallow sweet apple pie gummies danish macaroon macaroon chupa chups liquorice. Sugar plum chocolate cake sweet roll.',
-    imageUrl: 'https://caldervets.co.uk/wp-content/uploads/2016/06/Dental-Hygiene-For-Rabbits-970x546.jpg'
+    imageUrl: '../assets/img/love-history.png'
   }
 ]
 
@@ -57,10 +67,17 @@ export default {
 </script>
 
 <style scoped>
-button {
-  all: initial;
-  background-color: black;
-  color: white;
-  padding: 1rem;
-}
+  .img-container {
+    position: relative;
+  }
+  .img-container img {
+    width: 100%;
+  }
+  .img-container .title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-weight: 700px;
+  }
 </style>

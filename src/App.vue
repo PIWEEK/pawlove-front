@@ -71,4 +71,9 @@ img {
   letter-spacing: 2px;
   text-align: center;
 }
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
 </style>

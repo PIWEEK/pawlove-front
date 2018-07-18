@@ -12,19 +12,19 @@
       <fieldset>
         <label for="name">¿Cuál es tu nombre completo?</label>
         <input type="text" name="name" id="name" v-model="contactData.name">
-        <span v-if="!name && showError">Campo requerido</span>
+        <span v-if="!name && showError" class="required">Campo requerido</span>
       </fieldset>
 
       <fieldset>
         <label for="email">Indícanos un email</label>
         <input type="text" name="email" id="email" v-model="contactData.email">
-        <span v-if="!email && showError">Campo requerido</span>
+        <span v-if="!email && showError" class="required">Campo requerido</span>
       </fieldset>
 
       <fieldset>
         <label for="phone">Teléfono móvil</label>
         <input type="text" name="phone" id="phone" v-model="contactData.phone">
-        <span v-if="!phone && showError">Campo requerido</span>
+        <span v-if="!phone && showError" class="required">Campo requerido</span>
       </fieldset>
 
       <fieldset>
@@ -83,11 +83,6 @@ export default {
   .association-contact-form {
     margin-bottom: 1rem;
   }
-  fieldset {
-    border: none;
-    padding: 0;
-    margin: 0 0 1rem 0;
-  }
   label, input {
     display: block;
   }
@@ -112,5 +107,9 @@ export default {
   }
   .paw-title-primary {
     margin-bottom: 1rem;
+  }
+  .required {
+    color: #E4643C;
+    font-size: 12px;
   }
 </style>

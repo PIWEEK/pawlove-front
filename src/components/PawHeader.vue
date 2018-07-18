@@ -1,6 +1,6 @@
 <template>
   <header>
-    <button>
+    <button @click="openSideMenu">
       <img src="../assets/icons/menu.svg"/>
     </button>
     <router-link to="/" class="header-title">
@@ -10,8 +10,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'PawHeader'
+  name: 'PawHeader',
+  methods: {
+    ...mapActions({
+      openSideMenu: 'common/openSideMenu'
+    })
+  }
 }
 </script>
 

@@ -1,16 +1,19 @@
 <template>
   <div class="paw-match-group">
     <div class="paw-match-card" v-for="card in pet" :key="card.index">
-      <div class="header">
-        <img :src="card.profileImageUrl" alt=""/>
-        <p> {{ card.petName }}
-          <span class="date">{{ card.date }}</span>
+      <img :src="card.imageUrl" alt="" class="main-img"/>
+      <div class="content">
+        <div class="pet">
+          <img :src="card.profileImageUrl" alt=""/>
+          <div class="pet-info">
+            <span class="name">{{ card.petName }}</span>
+            <span class="date">{{ card.date }}</span>
+          </div>
+        </div>
+        <p class="description">
+          {{ card.description }}
         </p>
       </div>
-      <img :src="card.imageUrl" alt="" class="square"/>
-      <p class="description">
-        {{ card.description }}
-      </p>
     </div>
   </div>
 </template>
@@ -26,29 +29,37 @@ export default {
 
 <style scoped>
   .paw-match-group {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
   }
   .paw-match-card {
-    margin: 1rem;
+    margin: 0.25rem 0.25rem 1rem 0.25rem;
   }
-  .header {
-    align-items: center;
-    display: flex;
-    margin-bottom: 1rem;
-  }
-  .header img{
-    border-radius: 50%;
-    height: 50px;
-    margin-right: 1rem;
-    width: 50px;
-  }
-  .square {
+  .main-img {
     max-height: 500px;
+    border-radius: 4px 4px 0 0;
   }
-  .date {
+  .pet {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .pet img {
+    height: 36px;
+    border-radius: 50%;
+  }
+  .pet-info {
+    margin-left: 10px;
+    font-weight: 700;
+  }
+  .pet-info span {
     display: block;
   }
-  .description {
-    padding: 1rem 0.5rem;
+  .pet-info .name {
+    font-size: 14px;
+  }
+  .date {
+    color: #9B9B9B;
+    font-size: 12px;
   }
 </style>

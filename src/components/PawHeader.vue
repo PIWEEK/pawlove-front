@@ -3,7 +3,7 @@
     <button>
       <img src="../assets/icons/menu.svg"/>
     </button>
-    <router-link to="/">
+    <router-link to="/" class="header-title">
       Pawlove
     </router-link>
   </header>
@@ -26,11 +26,13 @@ button {
   bottom: 0;
   margin: auto 0;
 }
-a {
+.header-title {
   color: #4A4A4A;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 header {
   height: 40px;

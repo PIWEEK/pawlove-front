@@ -1,12 +1,6 @@
 <template>
-  <div class="feed">
-    <section class="main">
-      <h1>
-        ¿Te gustaría encontrar la mascota ideal en base a tu personalidad?
-      </h1>
-      <p>Completa nuestro cuestionario para saber qué mascota querría formar parte de tu vida.</p>
-      <router-link to="/pawonboarding" tag="a" class="paw-button">Encontrar mi mascota ideal</router-link>
-    </section>
+  <div class="paw-feed">
+    <PawCTA/>
     <PawSuccessCard/>
     <PawMatchCard :pet="follow1"/>
     <PawSuccessCard/>
@@ -19,6 +13,7 @@
 import PawSuccessCard from '@/components/PawSuccessCard.vue'
 import PawTips from '@/components/PawTips.vue'
 import PawMatchCard from '@/components/PawMatchCard.vue'
+import PawCTA from '@/components/PawCTA.vue'
 
 const follow1 = [
   {
@@ -58,7 +53,18 @@ export default {
   components: {
     PawSuccessCard,
     PawTips,
-    PawMatchCard
+    PawMatchCard,
+    PawCTA
   }
 }
 </script>
+
+<style scoped>
+  .paw-feed {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .paw-success-card, .paw-match-group, .paw-tips {
+    margin-bottom: 1.5rem;
+  }
+</style>

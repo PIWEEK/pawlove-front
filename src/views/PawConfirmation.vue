@@ -1,8 +1,19 @@
 <template>
   <div class="confirmation">
     <img src="https://media.giphy.com/media/l3mZfIZ6ZFlkIUH8A/giphy.gif" alt="Hi five"/>
-    <p>¡Perfecto!</p>
+    <p class="paw-title-primary">¡Perfecto!</p>
     <p>La asociación ANNA se pondrá en contacto contigo en los próximos días</p>
-    <router-link to="/" tag="a" class="paw-button">Entendido</router-link>
+    <router-link to="/" tag="a" class="paw-button primary">Entendido</router-link>
   </div>
 </template>
+
+<style scoped>
+  img {
+    padding: 2rem;
+  }
+  p {
+    margin-bottom: 1rem;
+    padding: 0 3rem;
+    text-align: center;
+  }
+</style>

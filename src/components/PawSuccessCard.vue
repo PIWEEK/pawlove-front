@@ -7,14 +7,19 @@
     <div class="content">
       <div class="association">
         <img :src="associationImageUrl" alt="" />
-        <p> {{ association }}
+        <div class="association-info">
+          <span class="name">{{ association }}</span>
           <span class="date">{{ time }}</span>
+        </div>
+      </div>
+      <div class="description">
+        <p class="title">
+          Esto es lo que nos cuenta {{ ownerName }}:
+        </p>
+        <p>
+          {{ description }}
         </p>
       </div>
-      <p class="description">
-        <strong>Esto es lo que nos cuenta {{ ownerName }}:</strong>
-        {{ description }}
-      </p>
     </div>
   </div>
 </template>
@@ -24,8 +29,8 @@ const successCases = [
   {
     title: '¡Hank y Elisabeth ya están en casa juntos!',
     association: 'Asociación GATA',
-    associationImageUrl: 'Asociación GATA',
-    time: '4546545646',
+    associationImageUrl: 'http://www.gataweb.com/images/logo.jpg',
+    time: 'Hace 1 minuto',
     petName: 'Hank',
     ownerName: 'Elisabeth',
     description: 'Hace dos días que Hank está en casa y ya es como si llevara toda la vida aquí. Se ha adueñado del sofá grande y mis hijos están ...',
@@ -34,8 +39,8 @@ const successCases = [
   {
     title: 'Zoe y Samuel, amantes de la montaña',
     association: 'Asociación GATA',
-    associationImageUrl: 'Asociación GATA',
-    time: '4546545646',
+    associationImageUrl: 'http://www.gataweb.com/images/logo.jpg',
+    time: 'Hace 1 minuto',
     petName: 'Zoe',
     ownerName: 'Samuel',
     description: 'Marshmallow sweet apple pie gummies danish macaroon macaroon chupa chups liquorice. Sugar plum chocolate cake sweet roll.',
@@ -44,8 +49,8 @@ const successCases = [
   {
     title: 'Coco, como caído del cocotero',
     association: 'Asociación GATA',
-    associationImageUrl: 'Asociación GATA',
-    time: '4546545646',
+    associationImageUrl: 'http://www.gataweb.com/images/logo.jpg',
+    time: 'Hace 1 minuto',
     petName: 'Coco',
     ownerName: 'Marina',
     description: 'Marshmallow sweet apple pie gummies danish macaroon macaroon chupa chups liquorice. Sugar plum chocolate cake sweet roll.',
@@ -69,6 +74,7 @@ export default {
 <style scoped>
   .img-container {
     position: relative;
+    margin-bottom: 10px;
   }
   .img-container img {
     width: 100%;
@@ -78,6 +84,34 @@ export default {
     bottom: 10px;
     left: 10px;
     color: #ffffff;
-    font-weight: 700px;
+    font-weight: 700;
+  }
+  .association {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .association img {
+    height: 36px;
+    border-radius: 50%;
+  }
+  .association-info {
+    margin-left: 10px;
+    font-weight: 700;
+  }
+  .association-info span {
+    display: block;
+  }
+  .association-info .name {
+    font-size: 14px;
+  }
+  .date {
+    color: #9B9B9B;
+    font-size: 12px;
+  }
+  .description .title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
   }
 </style>

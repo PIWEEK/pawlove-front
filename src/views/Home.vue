@@ -1,22 +1,13 @@
 <template>
   <div class="home">
-    <section class="main">
-      <div class="container">
-        <p>Reconócelo: tienes tus cosas, tus rarezas, tus manías... <br/> Las mascotas también tienen su personalidad.</p>
-        <div class="icons-group">
-          <img src="../assets/icons/dog.svg" alt="Icono perro"/>
-          <img src="../assets/icons/cat.svg" alt="Icono gato"/>
-          <img src="../assets/icons/hamster.svg" alt="Icono hamster"/>
-        </div>
-        <p class="title">¿Te ayudamos a encontrar tu nuevo amigo peludo?</p>
-        <router-link to="/pawonboarding" tag="a" class="paw-button">Encuentra mi mascota ideal</router-link>
-      </div>
-    </section>
+    <PawCTA />
     <PawSuccessCard/>
     <section class="association">
-      <h2>¿Colaboras con alguna asociación o refugio?</h2>
-      <p>Si quieres que tus potenciales mascotas puedan aparecer en los match contáctanos</p>
-      <router-link to="" tag="a" class="paw-button">Dar de alta mascotas</router-link>
+      <div class="flex">
+        <img src="../assets/icons/couple.svg" alt="Icono pareja"/>
+        <p class="title">¿Ayudas en una fundación, <br/>una asociación <br/> o una protectora?</p>
+      </div>
+      <router-link to="" tag="a" class="paw-button secondary">Encuenta un adoptante</router-link>
     </section>
     <PawSuccessCard/>
     <PawTips/>
@@ -26,36 +17,45 @@
 <script>
 import PawSuccessCard from '@/components/PawSuccessCard.vue'
 import PawTips from '@/components/PawTips.vue'
+import PawCTA from '@/components/PawCTA.vue'
 
 export default {
   name: 'home',
   components: {
     PawSuccessCard,
-    PawTips
+    PawTips,
+    PawCTA
   }
 }
 </script>
 
 <style scoped>
-  section {
-    text-align: center;
+  .association {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 1.5rem 0.75rem;
+    margin-bottom: 2rem;
   }
-  p {
-    margin-bottom: 1rem;
-  }
-  .main {
+  .association .flex {
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 1rem;
     justify-content: center;
-    min-height: 250px;
   }
-  .title {
-    font-size: 14px;
+  .association img {
+    margin: 0 2rem 0 1.5rem;
   }
-  .icons-group {
-    margin-bottom: 15px;
+  .association .title {
+    text-align: left;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
   }
-  .icons-group img:not(:last-child) {
-    margin-right: 5px;
+  .paw-success-card {
+    margin-bottom: 1.5rem;
+  }
+  .paw-tips {
+    margin-bottom: 1.5rem;
   }
 </style>

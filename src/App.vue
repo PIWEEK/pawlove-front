@@ -1,22 +1,27 @@
 <template>
   <div id="app">
-    <PawHeader />
-    <div id="nav">
-      <router-link to="/pawresultcard">Ficha</router-link> | 
-      <router-link to="/pawconfirmation">Confirmación</router-link>
-      <router-link to="/pawregister">Registro</router-link>
-      <router-link to="/pawfeed">Feed</router-link>
+    <PawSideMenu />
+    <div>
+      <PawHeader />
+      <div id="nav">
+        <router-link to="/pawresultcard">Ficha</router-link> |
+        <router-link to="/pawconfirmation">Confirmación</router-link>
+        <router-link to="/pawregister">Registro</router-link>
+        <router-link to="/pawfeed">Feed</router-link>
+      </div>
+      <router-view/>
     </div>
-    <router-view/>
   </div>
 </template>
 
 <script>
 import PawHeader from '@/components/PawHeader.vue'
+import PawSideMenu from '@/components/PawSideMenu'
 
 export default {
   name: 'app',
   components: {
+    PawSideMenu,
     PawHeader
   }
 }

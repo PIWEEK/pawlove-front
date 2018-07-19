@@ -42,11 +42,12 @@ button {
   letter-spacing: 5px;
 }
 header {
-  height: 40px;
+  height: 60px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 1rem;
 }
 img {
   width: 4rem;

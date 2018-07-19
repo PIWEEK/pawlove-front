@@ -1,52 +1,40 @@
 <template>
   <div class="onBoarding">
     <form>
-      <fieldset>
-        <p class="question">¿Pasas mucho tiempo fuera de casa?</p>
-        <div class="input-container">
-          <input type="radio" id="one" value="One" v-model="questionnaire.questionOne">
-          <label for="one" class="option-label">Perro</label>
-        </div>
-        <div class="input-container">
-          <input type="radio" id="two" value="Two" v-model="questionnaire.questionOne">
-          <label for="two" class="option-label">Gato</label>
-        </div>
-        <div class="input-container">
-          <input type="radio" id="three" value="Three" v-model="questionnaire.questionOne">
-          <label for="three" class="option-label">Conejo</label>
+      <fieldset :class="questionActive(question.id)" v-for="(question, index) in getQuestionsList.questions" :key="question.index">
+        <p class="question">{{question.text}}</p>
+        <div class="input-container" v-for="answer in question.answers" :key="answer.index">
+          <input type="radio" :id="answer.id" :value="answer.id" v-model="answers[index]" @change="hasValue">
+          <label :for="answer.id" class="answer-label">{{answer.text}}</label>
         </div>
       </fieldset>
 
-      <fieldset>
-        <input type="radio" id="one" value="One" v-model="questionnaire.questionTwo">
-        <label for="one" class="option-label">One</label>
-        <input type="radio" id="two" value="Two" v-model="questionnaire.questionTwo">
-        <label for="two" class="option-label">Two</label>
-      </fieldset>
-
-      <fieldset>
-        <input type="radio" id="one" value="One" v-model="picked3">
-        <label for="one" class="option-label">One</label>
-        <input type="radio" id="two" value="Two" v-model="picked3">
-        <label for="two" class="option-label">Two</label>
-      </fieldset>
-
-      <fieldset>
-        <input type="radio" id="one" value="One" v-model="picked4">
-        <label for="one" class="option-label">One</label>
-        <input type="radio" id="two" value="Two" v-model="picked4">
-        <label for="two" class="option-label">Two</label>
-      </fieldset>
       <div class="track-bar">
-        <p>1 de 9</p>
-        <button v-if="!lastQuestion" type="button">siguiente</button>
-        <button v-if="lastQuestion" type="submit">enviar</button>
+        <div :class="`icon icon-position-${currentQuestion}`">
+        <img v-if="currentQuestion === 1 || currentQuestion === 5 || currentQuestion === 9"
+          src="../assets/icons/kitty.svg"
+          alt="Icono gato"/>
+        <img v-if="currentQuestion === 2 || currentQuestion === 6 || currentQuestion === 10"
+          src="../assets/icons/canine.svg"
+          alt="Icono perro"/>
+        <img v-if="currentQuestion === 3 || currentQuestion === 7"
+          src="../assets/icons/rabbit.svg"
+          alt="Icono conejo"/>
+        <img v-if="currentQuestion === 4 || currentQuestion === 8"
+          src="../assets/icons/mouse.svg"
+          alt="Icono raton"/>
+        </div>
+        <p>{{currentQuestion}} de {{getQuestionsList.questions.length}}</p>
+        <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">siguiente</button>
+        <button type="submit" v-if="isLastQuestion">enviar</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'OnBoarding',
   props: {
@@ -54,30 +42,61 @@ export default {
   },
   data () {
     return {
-      questionnaire: {
-        questionOne: '',
-        questionTwo: '',
-        questionThree: '',
-        questionFour: ''
-      },
-      lastQuestion: false
+      answers: [],
+      currentQuestion: 1,
+      nextDisabled: true
     }
+  },
+  computed: {
+    ...mapGetters({
+      getQuestionsList: 'questions/getQuestionsList'
+    }),
+    isLastQuestion () {
+      return this.currentQuestion === this.getQuestionsList.questions.length
+    }
+  },
+  methods: {
+    ...mapActions({
+      getQuestions: 'questions/getQuestions'
+    }),
+    questionActive (questionId) {
+      if (this.currentQuestion === questionId) {
+        return ['active']
+      } else if (this.currentQuestion + 1 === questionId) {
+        return ['after']
+      } else if (this.currentQuestion - 1 === questionId) {
+        return ['before']
+      } else {
+        return ['']
+      }
+    },
+    handleNext () {
+      this.currentQuestion++
+      this.nextDisabled = true
+    },
+    hasValue (e) {
+      if (e.target.value) {
+        this.nextDisabled = false
+      }
+    }
+  },
+  created () {
+    this.getQuestions()
   }
 }
 
 </script>
-<style>
+<style scoped>
 .onBoarding {
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   position: relative;
-  
 }
 .question {
   font-size: 20px;
   text-align: center;
-  margin: 2rem 0 3rem;
+  margin: 2rem 1rem 3rem;
   color: #4F5859;
 }
 .track-bar {
@@ -101,6 +120,32 @@ export default {
   font-size: 14px;
   font-weight: 600;
 }
+.track-bar button:hover {
+  cursor: pointer;
+}
+.track-bar button:disabled {
+  opacity: 0.5;
+}
+form {
+  position: relative;
+  overflow: hidden;
+}
+fieldset {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+  transition: all ease-in 0.5s;
+}
+fieldset.before{
+  right: 100%;
+}
+fieldset.after{
+  right: -100%;
+}
+fieldset.active {
+  visibility: visible;
+  right: 0;
+}
 .input-container {
   position: relative;
 }
@@ -114,15 +159,58 @@ export default {
   margin: 0;
   cursor: pointer;
 }
-.option-label {
+.answer-label {
   display: block;
   background-color: #7CC4BA;
-  padding: 1rem 2.5rem;
+  padding: 1rem 3.5rem;
   color: #ffffff;
   border-top: 1px solid #73B6AD ;
 }
-.input-container input:checked + .option-label {
+.input-container input:checked + .answer-label {
   background-color: #68B0A5;
 }
-
+.input-container input:checked + .answer-label:before {
+  content: '✓';
+  position: absolute;
+  left: 25px;
+  font-size: 2rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 40px;
+}
+.icon {
+  position: absolute;
+  top: -60px;
+}
+.icon.icon-position-1 {
+  left: 8%;
+}
+.icon.icon-position-2 {
+  left: 16%;
+}
+.icon.icon-position-3 {
+  left: 24%;
+}
+.icon.icon-position-4 {
+  left: 32%;
+}
+.icon.icon-position-5 {
+  left: 40%;
+}
+.icon.icon-position-6 {
+  left: 48%;
+}
+.icon.icon-position-7 {
+  left: 56%;
+}
+.icon.icon-position-8 {
+  left: 64%;
+}
+.icon.icon-position-9 {
+  left: 72%;
+}
+.icon.icon-position-10 {
+  left: 80%;
+}
 </style>

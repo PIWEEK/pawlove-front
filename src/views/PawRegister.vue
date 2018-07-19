@@ -56,7 +56,7 @@ export default {
     checkForm: function (e) {
       this.showRequired = !this.password || !this.repeatPassword
       this.showDifferentValues = this.password !== this.repeatPassword
-    e.preventDefault()
+      e.preventDefault()
     }
   }
 }
@@ -82,7 +82,7 @@ export default {
     padding: .375rem .75rem;
     font-size: 14px;
     line-height: 1.5;
-    border: 1px solid #9B9B9B;         
+    border: 1px solid #9B9B9B;
     border-radius: 4px;
   }
   .required {

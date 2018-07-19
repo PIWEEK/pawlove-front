@@ -35,6 +35,50 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
+const matchPhoto = {
+  name: 'Fotografía de una planta',
+  nickname: 'papel',
+  race: null,
+  tags: [
+    'no un ser vivo',
+    'tímido'
+  ],
+  description: 'Es básicamente un papel pero es de buena calidad.\n\rNo obstante requiere de cuidados básicos, como no mojarla o quemarla, que igual pueden ser demasiado para ti. ',
+  age: null,
+  size: null,
+  personality_1: null,
+  personality_2: null,
+  personality_joke: null,
+  images: ['https://lh5.googleusercontent.com/b96TjURUQbgpAdKlglGJFn29wUN4EuGpbmS-hsxWcWDv8r24E7GHU4xZroo-WAtwU68AHO-7QleNDf2t2w2T=w1916-h957-rw'],
+  association: null,
+  adopted: false
+}
+
+const matchPlant = {
+  name: 'Espinete',
+  nickname: 'el cactus inmortal',
+  race: 'Cactaceae',
+  tags: [
+    'calmado',
+    'dominante',
+    'jugueton'
+  ],
+  description: 'Agradece los cuidados mínimos y le encanta hacer la fotosíntesis durante todo el día.\n\rPuede acumular una cantidad de agua tremenda. No le importa estar en termperaturas muy altas y secas. Incluso parece que le gusta.',
+  age: 2,
+  size: 'P',
+  personality_1: 'Superviviente de Aquella Semana',
+  personality_2: 'Cazador de grandes antílopes',
+  personality_joke: null,
+  images: [
+    'https://lh5.googleusercontent.com/zzpOT24gIV3jpiOfVN983kQa1_O98KulK248fzXNipahavxf1mWyWOfb9JHYpxxWiaCHmt0YCJhbdrA9_LEC=w1916-h957-rw',
+    'https://lh4.googleusercontent.com/9KVvrrqe7zRNuRWf8F0WWkNLZy0Yr8BeBFlSYOTsoHRYU1E6prswcO1JFXMngpJOMxnTHYL4COTUxf76rDyK=w1916-h957-rw',
+    'https://lh5.googleusercontent.com/l-d_UPGWoNRA5hm6kCFfa4J7XJ9-1Povft6t3iOQObhiYD5p9BDDgPpUY69xaNZDZilGWO3opudEYVj3a9P_=w1916-h957-rw',
+    'https://lh4.googleusercontent.com/lL_UfZ7WIuXU-VGEavyvjiRmoRKl56SpyQ9uSpqktbxHXyR04RnMAYosk4ABhDbVWOFTSuo9qlna3vHvRobk=w1916-h957-rw'
+  ],
+  association: null,
+  adopted: false
+}
+
 export default {
   name: 'OnBoarding',
   props: {
@@ -58,7 +102,8 @@ export default {
   methods: {
     ...mapActions({
       getQuestions: 'questions/getQuestions',
-      getMatch: 'match/getMatch'
+      getMatch: 'match/getMatch',
+      setMatch: 'match/setMatch'
     }),
     questionActive (questionId) {
       if (this.currentQuestion === questionId) {
@@ -81,21 +126,20 @@ export default {
       }
     },
     handleSubmit () {
-      const answers = this.answers.join(',')
-
+      const answers = this.answers.sort((a, b) => (a - b)).join(',')
       switch (answers.slice(0, 5)) {
         case '3,6,9':
-          this.$router.push({name: 'pawresultcard', params: { result: 1 }})
+          this.setMatch(matchPhoto)
           break
         case '3,5,8':
         case '3,5,9':
         case '3,6,8':
-          this.$router.push({name: 'pawresultcard', params: { result: 2 }})
+          this.setMatch(matchPlant)
           break
         default:
           this.getMatch(answers)
-          this.$router.push({name: 'pawresultcard'})
       }
+      this.$router.push({name: 'pawresultcard'})
     }
   },
   created () {

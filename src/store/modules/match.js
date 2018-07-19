@@ -9,21 +9,23 @@ const getters = {
 }
 
 const mutationTypes = {
-  GET_MATCH: 'GET_MATCH'
+  SET_MATCH: 'SET_MATCH'
 }
 
 const mutations = {
-  [mutationTypes.GET_MATCH] (state, match) {
+  [mutationTypes.SET_MATCH] (state, match) {
     state.match = match
   }
 }
 
 const actions = {
   getMatch ({commit}, answers) {
-    console.log(answers)
     appService.getMatch(answers).then(match => {
-      commit(mutationTypes.GET_MATCH, match[0])
+      commit(mutationTypes.SET_MATCH, match[0])
     })
+  },
+  setMatch ({commit}, match) {
+    commit(mutationTypes.SET_MATCH, match)
   }
 }
 

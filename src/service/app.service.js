@@ -26,6 +26,14 @@ const appService = {
         resolve(response.data)
       })
     })
+  },
+  getMatch (answers) {
+    return new Promise((resolve) => {
+      console.log(answers)
+      axios.get(`/pets/?answers=${answers}`).then(response => {
+        resolve(response.data)
+      })
+    })
   }
 }
 export default appService

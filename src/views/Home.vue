@@ -1,7 +1,15 @@
 <template>
   <div class="home">
     <PawCTA />
-    <PawSuccessCard/>
+    <PawSuccessCard
+      title="¡Hank y Elisabeth ya están en casa juntos!"
+      association="Asociación GATA"
+      associationImageUrl="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/3483982/580/390/m1/fpnw/wm0/2-.png?1509143244&s=3abd226ed38aead3abd30aeffbc35346"
+      time="Hace 1 minuto"
+      petName="Hank"
+      ownerName="Elisabeth"
+      description="Hace dos días que Hank está en casa y ya es como si llevara toda la vida aquí. Se ha adueñado del sofá grande y mis hijos están ..."
+      imageUrl="https://t1.uc.ltmcdn.com/images/8/5/4/img_por_que_se_le_caen_los_dientes_a_mi_gato_causas_y_soluciones_48458_300_150.jpg"/>
     <section class="association">
       <div class="flex">
         <img src="../assets/icons/couple.svg" alt="Icono pareja"/>
@@ -9,7 +17,15 @@
       </div>
       <router-link to="" tag="a" class="paw-button secondary">Encuenta un adoptante</router-link>
     </section>
-    <PawSuccessCard/>
+    <PawSuccessCard
+      title="Salva se hace sitio en casa de Marta."
+      association="Sociedad protectora de animales PETMA"
+      associationImageUrl="https://pawlove.club/media/uploads/Oval.png"
+      time="Hace 1 minuto"
+      petName="Salva"
+      ownerName="Marta"
+      description="Salva llegó con mucho miedo pero ahora puede estar tranquilo porque aquí va a tener todo lo que le haga falta..."
+      imageUrl="http://demo.isotype.blue/metagrid/wp-content/uploads/sites/20/2015/05/girl-1160441_1920-1-960x440.jpg"/>
     <PawTips/>
   </div>
 </template>
@@ -30,6 +46,9 @@ export default {
 </script>
 
 <style scoped>
+  .home {
+    margin: 0 10px;
+  }
   .association {
     background-color: #ffffff;
     border-radius: 4px;

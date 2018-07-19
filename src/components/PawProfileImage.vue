@@ -4,11 +4,14 @@
       <div class="img-container">
         <img :src="imgUrl" alt="" />
       </div>
-      <a v-if="showFollowLink" href="" class="paw-link">seguir</a>
+      <a v-if="showFollowLink" href="" class="paw-link">
+        <img src="../assets/icons/prints.svg" alt="huellas"/>
+        seguir
+      </a>
     </div>
     <div class="profile-title">
       <p class="pet-name">{{petName}}</p>
-      <p class="pet-type">{{type}}</p> 
+      <p class="pet-type">{{type}}</p>
     </div>
   </div>
 </template>
@@ -50,7 +53,18 @@ export default {
   }
   .paw-link {
     position: absolute;
-    top: 30px;
-    right: 40px;
+    top: 15px;
+    right: 10px;
+    color: #E4643C;
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+    border: 1px solid #E4643C;
+    padding: 0.75rem 1.25rem;
+    border-radius: 15px;
+    background-color: #ffffff;
+  }
+  .paw-link img {
+    margin-right: 0.5rem;
   }
 </style>

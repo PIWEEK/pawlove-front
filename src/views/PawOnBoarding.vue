@@ -160,6 +160,7 @@ export default {
   text-align: center;
   margin: 2rem 1rem 3rem;
   color: #4F5859;
+  min-height: 3rem;
 }
 .track-bar {
   position: absolute;

@@ -20,8 +20,8 @@ const mutations = {
 
 const actions = {
   getQuestions ({ commit }) {
-    appService.getQuestions().then(data => {
-      commit(mutationTypes.GET_QUESTIONS, { questions: data })
+    appService.getQuestions().then(questions => {
+      commit(mutationTypes.GET_QUESTIONS, questions)
     })
   }
 }

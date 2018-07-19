@@ -1,7 +1,7 @@
 <template>
   <div class="onBoarding">
     <form>
-      <fieldset :class="questionActive(question.id)" v-for="(question, index) in getQuestionsList.questions" :key="question.index">
+      <fieldset :class="questionActive(question.id)" v-for="(question, index) in getQuestionsList" :key="question.index">
         <p class="question">{{question.text}}</p>
         <div class="input-container" v-for="answer in question.answers" :key="answer.index">
           <input type="radio" :id="answer.id" :value="answer.id" v-model="answers[index]" @change="hasValue">
@@ -24,7 +24,7 @@
           src="../assets/icons/mouse.svg"
           alt="Icono raton"/>
         </div>
-        <p>{{currentQuestion}} de {{getQuestionsList.questions.length}}</p>
+        <p>{{currentQuestion}} de {{getQuestionsList.length}}</p>
         <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">siguiente</button>
         <button type="submit" v-if="isLastQuestion">enviar</button>
       </div>
@@ -52,7 +52,7 @@ export default {
       getQuestionsList: 'questions/getQuestionsList'
     }),
     isLastQuestion () {
-      return this.currentQuestion === this.getQuestionsList.questions.length
+      return this.currentQuestion === this.getQuestionsList.length
     }
   },
   methods: {

@@ -44,7 +44,7 @@ body {
 }
 #app {
   background-color: #EDEDED;
-  height: 100%;
+  min-height: 100vh;
 }
 p {
   font-size: 14px;

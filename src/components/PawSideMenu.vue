@@ -145,7 +145,7 @@ export default {
     color: #4a4a4a;
     display: block;
     margin-top: 2.4rem;
-    width: 100%;
+    min-width: 16rem;
     text-decoration: none;
   }
   .actions a img {

@@ -9,7 +9,7 @@
 
 <style scoped>
   .confirmation {
-    margin: 0 10px;
+    margin: 0 1rem;
   }
   img {
     padding: 2rem;

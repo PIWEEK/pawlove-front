@@ -21,8 +21,8 @@ const mutations = {
 const actions = {
   getMatch ({commit}, answers) {
     console.log(answers)
-    appService.getMatch(answers).then(data => {
-      commit(mutationTypes.GET_MATCH, { match: data })
+    appService.getMatch(answers).then(match => {
+      commit(mutationTypes.GET_MATCH, match)
     })
   }
 }

@@ -139,7 +139,7 @@ export default {
     border-top: 1px #f1f1f1 solid;
     margin-top: 2rem;
     padding-left: 1.2rem;
-    font-seze: 1.3rem;
+    font-size: 1.3rem;
   }
   .actions a {
     color: #4a4a4a;

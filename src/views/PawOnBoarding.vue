@@ -25,8 +25,8 @@
           alt="Icono raton"/>
         </div>
         <p>{{currentQuestion}} de {{getQuestionsList.length}}</p>
-        <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">siguiente</button>
-        <button type="submit" v-if="isLastQuestion">enviar</button>
+        <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">Siguiente</button>
+        <button type="button" v-if="isLastQuestion" @click="handleSubmit">Enviar</button>
       </div>
     </form>
   </div>
@@ -57,7 +57,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      getQuestions: 'questions/getQuestions'
+      getQuestions: 'questions/getQuestions',
+      getMatch: 'match/getMatch'
     }),
     questionActive (questionId) {
       if (this.currentQuestion === questionId) {
@@ -77,6 +78,23 @@ export default {
     hasValue (e) {
       if (e.target.value) {
         this.nextDisabled = false
+      }
+    },
+    handleSubmit () {
+      const answers = this.answers.join(',')
+
+      switch (answers.slice(0, 5)) {
+        case '3,6,9':
+          this.$router.push({name: 'pawresultcard', params: { result: 1 }})
+          break
+        case '3,5,8':
+        case '3,5,9':
+        case '3,6,8':
+          this.$router.push({name: 'pawresultcard', params: { result: 2 }})
+          break
+        default:
+          this.getMatch(answers)
+          this.$router.push({name: 'pawresultcard'})
       }
     }
   },

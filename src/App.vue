@@ -3,12 +3,6 @@
     <PawSideMenu />
     <div>
       <PawHeader />
-      <div id="nav">
-        <router-link to="/pawresultcard">Ficha</router-link> |
-        <router-link to="/pawconfirmation">Confirmación</router-link>
-        <router-link to="/pawregister">Registro</router-link>
-        <router-link to="/pawfeed">Feed</router-link>
-      </div>
       <router-view/>
     </div>
   </div>

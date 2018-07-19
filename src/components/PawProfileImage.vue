@@ -40,7 +40,7 @@ export default {
     margin: auto;
     overflow: hidden;
   }
-  .profile-img img {
+  .profile-img .img-container img {
     height: 100%;
   }
   .profile-title {

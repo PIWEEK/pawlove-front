@@ -1,7 +1,7 @@
 import appService from '../../service/app.service.js'
 
 const state = {
-  match: []
+  match: null
 }
 
 const getters = {
@@ -22,7 +22,7 @@ const actions = {
   getMatch ({commit}, answers) {
     console.log(answers)
     appService.getMatch(answers).then(match => {
-      commit(mutationTypes.GET_MATCH, match)
+      commit(mutationTypes.GET_MATCH, match[0])
     })
   }
 }

@@ -108,7 +108,7 @@ export default {
 .onBoarding {
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   position: relative;
 }
 .question {

@@ -39,6 +39,7 @@ body {
 #app {
   background-color: #EDEDED;
   min-height: 100vh;
+  height: 100%;
 }
 p {
   font-size: 14px;

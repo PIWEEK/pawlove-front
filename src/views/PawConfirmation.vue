@@ -1,11 +1,24 @@
 <template>
-  <div class="confirmation">
-    <img src="https://media.giphy.com/media/l3mZfIZ6ZFlkIUH8A/giphy.gif" alt="Hi five"/>
+  <div class="confirmation" v-if="getMatch">
+    <img src="../assets/img/confirmation.gif" alt="Confirmación"/>
     <p class="paw-title-primary">¡Perfecto!</p>
-    <p>La asociación ANNA se pondrá en contacto contigo en los próximos días</p>
+    <p>La {{getMatch.association.name}} se pondrá en contacto contigo en los próximos días</p>
     <router-link to="/pawfeed" tag="a" class="paw-button primary">Entendido</router-link>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'pawConfirmation',
+  computed: {
+    ...mapGetters({
+      getMatch: 'match/getMatch'
+    })
+  }
+}
+</script>
 
 <style scoped>
   .confirmation {

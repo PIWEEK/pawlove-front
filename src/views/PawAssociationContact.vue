@@ -1,10 +1,10 @@
 <template>
-  <div class="paw-association-contact">
+  <div class="paw-association-contact" v-if="getMatch">
     <PawProfileImage
-      imgUrl="https://instagram.fmad3-7.fna.fbcdn.net/vp/dfd813c0a53d73f437639f4a9060ce9c/5BC6C53D/t51.2885-15/e35/35617246_240673170075456_4290119012362223616_n.jpg"
+      :imgUrl="getMatch.images[0]"
       :showFollowLink="false"
-      petName="Antonio"
-      type="el Goden Terrier"/>
+      :petName="getMatch.name"
+      :type="getMatch.race"/>
     <p class="paw-title-primary">¡Ya estás más cerca de tener a tu nuevo amigo en casa!</p>
     <p class="contact-subtitle">Regístrate para que la asociación GATA contacte contigo:</p>
     <a href="" class="paw-link">Tengo una cuenta</a>
@@ -46,15 +46,15 @@
       </fieldset>
 
       <fieldset>
-        <button type="submit" class="paw-button primary">Enviar datos de contacto</button>
+        <button type="submit" class="paw-button primary">Registrarme</button>
       </fieldset>
     </form>
     <p class="contact-subtitle">Si lo prefieres, puedes contactar directamente con la asociación.</p>
     <div class="org-info">
-      <img  class="photo" src="https://pawlove.club/media/uploads/petlogo.jpeg" />
+      <img  class="photo" :src="getMatch.association.logo" />
       <div class="data">
-        <span class="name">GATA</span>
-        <span class="description">Asociación protectora de animales</span>
+        <span class="name">{{getMatch.association.name}}</span>
+        <span class="description">{{getMatch.association.description}}</span>
       </div>
     </div>
     <a class="paw-button secondary org-link">Ver los datos de contacto.</a>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 import PawProfileImage from '@/components/PawProfileImage.vue'
 
 export default {
@@ -79,6 +79,11 @@ export default {
         comments: null
       }
     }
+  },
+  computed: {
+    ...mapGetters({
+      getMatch: 'match/getMatch'
+    })
   },
   methods: {
     checkForm: function (e) {
@@ -112,8 +117,7 @@ export default {
   .paw-association-contact {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0 1.25rem;
-    padding-bottom: 2rem;
+    padding: 1.5rem 1.25rem 2rem 1.25rem;
   }
   .association-contact-form {
     margin-bottom: 3.125rem;
@@ -123,6 +127,7 @@ export default {
   }
   label {
     margin-bottom: 0.1rem;
+    color: #4F5859;
   }
   input, textarea {
     display: block;
@@ -131,7 +136,7 @@ export default {
     padding: .375rem .75rem;
     font-size: 14px;
     line-height: 1.5;
-    border: 1px solid #9B9B9B;
+    border: 1px solid #B8E5DF;
     border-radius: 4px;
   }
   textarea {
@@ -140,16 +145,21 @@ export default {
   button {
     margin-top: 1.875rem;
   }
+  .paw-button {
+    width: 310px;
+  }
   .contact-subtitle {
     font-size: 16px;
     margin-bottom: 0.25rem;
+    color: #4F5859;
   }
   .paw-link {
     color: #E4643C;
     margin-bottom: 1.2rem;
   }
   .paw-title-primary {
-    margin-bottom: 1rem;
+    margin: 1rem 2rem;
+    line-height: 20px;
   }
   .required {
     color: #E4643C;

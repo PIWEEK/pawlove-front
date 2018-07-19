@@ -85,7 +85,6 @@ export default {
       }
       return size[this.getMatch.size]
     }
-
   }
 }
 </script>

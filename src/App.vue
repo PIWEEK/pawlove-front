@@ -44,6 +44,7 @@ body {
 }
 #app {
   background-color: #EDEDED;
+  height: 100%;
 }
 p {
   font-size: 14px;
@@ -55,16 +56,15 @@ img {
 .paw-button {
   all: initial;
   border-radius: 8px;
-  box-shadow: 2px 3px 4px 0px rgba(0,0,0,0.2);
   display: block;
   font-family: 'Cabin', sans-serif;
   padding: 1.2rem;
   text-align: center;
   margin: auto;
-  width: 310px;
 }
 .paw-button.primary {
   background-color: #E4643C;
+  box-shadow: 2px 3px 4px 0px rgba(0,0,0,0.2);
   color: #ffffff;
 }
 .paw-button.secondary {
@@ -72,9 +72,6 @@ img {
   color: #E4643C;
   border: 1px solid #E4643C;
 }
-.paw-link {
-    color: #2197D8;
-  }
 .paw-title-primary {
   color: #E4643C;
   text-transform: uppercase;

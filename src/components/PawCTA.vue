@@ -37,7 +37,7 @@
     border: 1px solid #E4643C;
   }
   .main .paw-button {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
   .main .title {
     color: #E4643C;

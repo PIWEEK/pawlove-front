@@ -34,10 +34,16 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-color: #EDEDED;
 }
 * {
   box-sizing: border-box;
+}
+body {
+  margin: 0 auto;
+  max-width: 768px;
+}
+#app {
+  background-color: #EDEDED;
 }
 p {
   font-size: 14px;

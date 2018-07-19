@@ -1,16 +1,16 @@
 <template>
   <div class="paw-feed">
     <PawCTA/>
+    <PawMatchCard :pet="follow1"/>
     <PawSuccessCard
       title="¡Hank y Elisabeth ya están en casa juntos!"
       association="Asociación GATA"
-      associationImageUrl="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/3483982/580/390/m1/fpnw/wm0/2-.png?1509143244&s=3abd226ed38aead3abd30aeffbc35346"
+      associationImageUrl="https://pawlove.club/media/uploads/petlogo.jpeg"
       time="Hace 1 minuto"
       petName="Hank"
       ownerName="Elisabeth"
       description="Hace dos días que Hank está en casa y ya es como si llevara toda la vida aquí. Se ha adueñado del sofá grande y mis hijos están ..."
       imageUrl="https://t1.uc.ltmcdn.com/images/8/5/4/img_por_que_se_le_caen_los_dientes_a_mi_gato_causas_y_soluciones_48458_300_150.jpg"/>
-    <PawMatchCard :pet="follow1"/>
     <PawSuccessCard
       title="Salva se hace sitio en casa de Marta."
       association="Sociedad protectora de animales PETMA"

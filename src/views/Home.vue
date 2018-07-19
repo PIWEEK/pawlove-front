@@ -4,7 +4,7 @@
     <PawSuccessCard
       title="¡Hank y Elisabeth ya están en casa juntos!"
       association="Asociación GATA"
-      associationImageUrl="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/3483982/580/390/m1/fpnw/wm0/2-.png?1509143244&s=3abd226ed38aead3abd30aeffbc35346"
+      associationImageUrl="https://pawlove.club/media/uploads/petlogo.jpeg"
       time="Hace 1 minuto"
       petName="Hank"
       ownerName="Elisabeth"

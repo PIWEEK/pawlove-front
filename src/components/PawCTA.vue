@@ -27,6 +27,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: 250px;
+    margin-top: 1.5rem;
   }
   .main p {
     font-size: 16px;

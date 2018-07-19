@@ -1,66 +1,64 @@
 <template>
-  <div class="paw-result-card">
+  <div class="paw-result-card" v-if="getMatch">
     <div class="match-card">
       <p class="paw-title-primary">¡Tenemos un match!</p>
       <PawProfileImage
-        imgUrl="https://instagram.fmad3-7.fna.fbcdn.net/vp/dfd813c0a53d73f437639f4a9060ce9c/5BC6C53D/t51.2885-15/e35/35617246_240673170075456_4290119012362223616_n.jpg"
+        :imgUrl="getMatch.images[0]"
         :showFollowLink="true"
-        petName="Antonio"
-        type="el Goden Terrier"/>
+        :petName="getMatch.name"
+        :type="getMatch.race"/>
       <div class="pet-tags">
-        <span class="tag">calmado</span>
-        <span class="tag">dominante</span>
-        <span class="tag">juguetón</span>
+        <span v-for="tag in getMatch.tags" :key="tag.index" class="tag">{{tag}}</span>
       </div>
       <div class="pet-description">
-        <p>Antonio es muy cariñoso y tiene mucha energía.
-          Está todo el día haciendo el tonto con los juguetes, en especial con su tortuga de peluche.
-          Está muy contento en casa si va a jugar al parque durante al menos media hora.
+        <p>
+          {{getMatch.description}}
         </p>
       </div>
       <router-link to="/pawassociationcontact" tag="a" class="paw-button primary">¡Quiero adoptar!</router-link>
     </div>
 
     <div class="hobbies">
-      <p>Macho Golden Terrier</p>
+      <p>{{getMatch.sex === 'M' ? "Macho": "Hembra"}} {{getMatch.race}}</p>
       <ul>
         <li>
           <img  src="../assets/icons/cake.svg" alt="icono tarta"/>
-          2 años
+          {{getMatch.birth_date}}
         </li>
         <li>
-          <img  src="../assets/icons/measure.svg" alt="icono metro"/>
-          Tamaño mediano
+          <img src="../assets/icons/measure.svg" alt="icono metro"/>
+          Tamaño {{displaySize}}
         </li>
         <li>
           <img  src="../assets/icons/prize.svg" alt="icono premio"/>
-          Cocreador en la creación de la batamanta</li>
+          {{getMatch.personality_1}}</li>
         <li>
           <img src="../assets/icons/prize.svg" alt="icono premio"/>
-          Gran cazador de ardillas</li>
+          {{getMatch.personality_2}}</li>
+        <li>
+          <img src="../assets/icons/prize.svg" alt="icono premio"/>
+          {{getMatch.personality_joke}}</li>
       </ul>
     </div>
 
     <div class="media">
-      <img class="pet-img" src="../assets/img/dog1.png" alt="imagen perro"/>
-      <img class="pet-img" src="../assets/img/dog2.png" alt="imagen perro"/>
-      <img class="pet-img" src="../assets/img/dog3.png" alt="imagen perro"/>
+      <img v-for="image in getMatch.images" :key="image.index" class="pet-img" :src="image" alt=""/>
       <div class="view-more">
         <img src="../assets/icons/camera.svg" alt="icono cámara"/>
-        <span>+9 más</span>
+        <span>ver más</span>
       </div>
     </div>
 
     <div class="questions">
-      <p>¿Tienes alguna duda sobre Antonio?</p>
+      <p>¿Tienes alguna duda sobre {{getMatch.name}}?</p>
       <router-link to="" tag="a" class="paw-button secondary">Pregunta a la asociación</router-link>
     </div>
 
     <div class="association">
-      <img src="http://www.gataweb.com/images/logo.jpg" alt="" />
+      <img :src="getMatch.association && getMatch.association.logo" :alt="getMatch.association.name" />
       <div class="association-info">
-        <span class="name">GATA</span>
-        <span class="subtitle">Asociación protectora de animales</span>
+        <span class="name">{{getMatch.association.name}}</span>
+        <span class="subtitle">{{getMatch.association.description}}</span>
       </div>
     </div>
   </div>
@@ -68,11 +66,26 @@
 
 <script>
 import PawProfileImage from '@/components/PawProfileImage.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'pawResultCard',
   components: {
     PawProfileImage
+  },
+  computed: {
+    ...mapGetters({
+      getMatch: 'match/getMatch'
+    }),
+    displaySize () {
+      const size = {
+        P: 'pequeño',
+        M: 'mediano',
+        G: 'grande'
+      }
+      return size[this.getMatch.size]
+    }
+
   }
 }
 </script>
@@ -125,6 +138,7 @@ export default {
   }
   .association-info .subtitle {
     color: #9B9B9B;
+    font-size: 14px;
   }
   .media {
     display: grid;

@@ -1,63 +1,71 @@
 <template>
-  <div class="paw-association-contact" v-if="getMatch">
-    <PawProfileImage
-      :imgUrl="getMatch.images[0]"
-      :showFollowLink="false"
-      :petName="getMatch.name"
-      :type="getMatch.race"/>
-    <p class="paw-title-primary">¡Ya estás más cerca de tener a tu nuevo amigo en casa!</p>
-    <p class="contact-subtitle">Regístrate para que la asociación GATA contacte contigo:</p>
-    <a href="" class="paw-link">Tengo una cuenta</a>
-    <form id="associationContact" @submit="checkForm" class="association-contact-form">
-      <fieldset>
-        <label for="name">¿Cuál es tu nombre completo?</label>
-        <input type="text" name="name" id="name" v-model="contactData.name">
-        <span v-if="!contactData.name && showError" class="required">Campo requerido</span>
-      </fieldset>
+  <div>
+    <div class="paw-association-contact" v-if="getMatch">
+      <PawProfileImage
+        :imgUrl="getMatch.images[0]"
+        :showFollowLink="false"
+        :petName="getMatch.name"
+        :type="getMatch.race"/>
+      <p class="paw-title-primary">¡Ya estás más cerca de tener a tu nuevo amigo en casa!</p>
+      <p class="contact-subtitle">Regístrate para que la asociación GATA contacte contigo:</p>
+      <a href="" class="paw-link">Tengo una cuenta</a>
+      <form id="associationContact" @submit="checkForm" class="association-contact-form">
+        <fieldset>
+          <label for="name">¿Cuál es tu nombre completo?</label>
+          <input type="text" name="name" id="name" v-model="contactData.name">
+          <span v-if="!contactData.name && showError" class="required">Campo requerido</span>
+        </fieldset>
 
-      <fieldset>
-        <label for="email">Indícanos un email</label>
-        <input type="text" name="email" id="email" v-model="contactData.email">
-        <span v-if="!contactData.email && showError" class="required">Campo requerido</span>
-        <span v-if="!validEmail(contactData.email) && showError" class="required">Email inválido</span>
-      </fieldset>
+        <fieldset>
+          <label for="email">Indícanos un email</label>
+          <input type="text" name="email" id="email" v-model="contactData.email">
+          <span v-if="!contactData.email && showError" class="required">Campo requerido</span>
+          <span v-if="!validEmail(contactData.email) && showError" class="required">Email inválido</span>
+        </fieldset>
 
-      <fieldset>
-        <label for="password">Indica una contraseña</label>
-        <input type="password" name="password" id="password" v-model="contactData.password">
-        <span v-if="!contactData.password && showError" class="required">Campo requerido</span>
-      </fieldset>
+        <fieldset>
+          <label for="password">Indica una contraseña</label>
+          <input type="password" name="password" id="password" v-model="contactData.password">
+          <span v-if="!contactData.password && showError" class="required">Campo requerido</span>
+        </fieldset>
 
-      <fieldset>
-        <label for="repeatPassword">Repite la contraseña</label>
-        <input type="password" name="repeatPassword" id="repeatPassword" v-model="contactData.repeatPassword">
-        <span v-if="!contactData.repeatPassword && showError" class="required">Campo requerido</span>
-        <span v-if="contactData.repeatPassword !== contactData.password && showError" class="required">La contraseña no coincide con el campo anterior</span>
-      </fieldset>
-      <fieldset>
-        <label for="phone">Teléfono móvil</label>
-        <input type="text" name="phone" id="phone" v-model="contactData.phone">
-        <span v-if="!contactData.phone && showError" class="required">Campo requerido</span>
-      </fieldset>
+        <fieldset>
+          <label for="repeatPassword">Repite la contraseña</label>
+          <input type="password" name="repeatPassword" id="repeatPassword" v-model="contactData.repeatPassword">
+          <span v-if="!contactData.repeatPassword && showError" class="required">Campo requerido</span>
+          <span v-if="contactData.repeatPassword !== contactData.password && showError" class="required">La contraseña no coincide con el campo anterior</span>
+        </fieldset>
+        <fieldset>
+          <label for="phone">Teléfono móvil</label>
+          <input type="text" name="phone" id="phone" v-model="contactData.phone">
+          <span v-if="!contactData.phone && showError" class="required">Campo requerido</span>
+        </fieldset>
 
-      <fieldset>
-        <label for="comments">¿Algún comentario?</label>
-        <textarea type="text" name="comments" id="comments" v-model="contactData.comments" />
-      </fieldset>
+        <fieldset>
+          <label for="comments">¿Algún comentario?</label>
+          <textarea type="text" name="comments" id="comments" v-model="contactData.comments" />
+        </fieldset>
 
-      <fieldset>
-        <button type="submit" class="paw-button primary">Registrarme</button>
-      </fieldset>
-    </form>
-    <p class="contact-subtitle">Si lo prefieres, puedes contactar directamente con la asociación.</p>
-    <div class="org-info">
-      <img  class="photo" :src="getMatch.association.logo" />
-      <div class="data">
-        <span class="name">{{getMatch.association.name}}</span>
-        <span class="description">{{getMatch.association.description}}</span>
+        <fieldset>
+          <button type="submit" class="paw-button primary">Registrarme</button>
+        </fieldset>
+      </form>
+      <p class="contact-subtitle">Si lo prefieres, puedes contactar directamente con la asociación.</p>
+      <div class="org-info">
+        <img  class="photo" :src="getMatch.association.logo" />
+        <div class="data">
+          <span class="name">{{getMatch.association.name}}</span>
+          <span class="description">{{getMatch.association.description}}</span>
+        </div>
       </div>
+      <a class="paw-button secondary org-link">Ver los datos de contacto.</a>
     </div>
-    <a class="paw-button secondary org-link">Ver los datos de contacto.</a>
+    <div class="empty-card" v-else>
+      <p class="paw-title-primary">404</p>
+      <img src="../assets/img/404.gif" alt="Página no encontrada"/>
+      <p>Tenemos a nuestras mejores cabecitas peludas pensantes intentando descrubir qué ha pasado.</p>
+      <router-link to="/" tag="a" class="paw-button primary">Volver al inicio</router-link>
+    </div>
   </div>
 </template>
 
@@ -197,5 +205,20 @@ export default {
   }
   .org-link {
     box-shadow: none;
+  }
+  .empty-card {
+    margin: 0 10px;
+  }
+  .empty-card .paw-title-primary {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .empty-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .empty-card img{
+    padding: 1rem 2rem;
   }
 </style>

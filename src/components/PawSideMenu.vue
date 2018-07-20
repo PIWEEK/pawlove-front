@@ -78,11 +78,11 @@ export default {
 
   .menu.open {
     width: 80%;
+    box-shadow: 14px 0px 37px 1px rgba(0,0,0,0.17);
   }
 
   .menu {
     background-color: #FFFFFF;
-    box-shadow: 14px 0px 37px 1px rgba(0,0,0,0.17);
     display:flex;
     flex-direction: column;
     font-family: Cabin;

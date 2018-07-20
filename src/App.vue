@@ -34,7 +34,7 @@ html {
 }
 body {
   margin: 0 auto;
-  max-width: 768px;
+  max-width: 414px;
 }
 #app {
   background-color: #EDEDED;
@@ -56,6 +56,8 @@ img {
   padding: 1.2rem;
   text-align: center;
   margin: auto;
+  max-width: 310px;
+  cursor: pointer;
 }
 .paw-button.primary {
   background-color: #E4643C;

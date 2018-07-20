@@ -1,65 +1,73 @@
 <template>
-  <div class="paw-result-card" v-if="getMatch">
-    <div class="match-card">
-      <p class="paw-title-primary">¡Tenemos un match!</p>
-      <PawProfileImage
-        :imgUrl="getMatch.images[0]"
-        :showFollowLink="getMatch.association !== null"
-        :petName="getMatch.name"
-        :type="getMatch.nickname"/>
-      <div class="pet-tags">
-        <span v-for="tag in getMatch.tags" :key="tag.index" class="tag">{{tag}}</span>
+  <div>
+    <div class="paw-result-card" v-if="getMatch">
+      <div class="match-card">
+        <p class="paw-title-primary">¡Tenemos un match!</p>
+        <PawProfileImage
+          :imgUrl="getMatch.images[0]"
+          :showFollowLink="getMatch.association !== null"
+          :petName="getMatch.name"
+          :type="getMatch.nickname"/>
+        <div class="pet-tags">
+          <span v-for="tag in getMatch.tags" :key="tag.index" class="tag">{{tag}}</span>
+        </div>
+        <div class="pet-description">
+          <p>
+            {{getMatch.description}}
+          </p>
+        </div>
+        <router-link to="/pawassociationcontact" tag="a" class="paw-button primary">¡Quiero adoptar!</router-link>
       </div>
-      <div class="pet-description">
-        <p>
-          {{getMatch.description}}
-        </p>
+
+      <div class="hobbies" v-if="getMatch.race">
+        <p>{{ displaySex }} {{getMatch.race}}</p>
+        <ul>
+          <li>
+            <img  src="../assets/icons/cake.svg" alt="icono tarta"/>
+            {{`${getMatch.age} años`}}
+          </li>
+          <li>
+            <img src="../assets/icons/measure.svg" alt="icono metro"/>
+            Tamaño {{displaySize}}
+          </li>
+          <li v-if="getMatch.personality_1">
+            <img  src="../assets/icons/prize.svg" alt="icono premio"/>
+            {{getMatch.personality_1}}</li>
+          <li v-if="getMatch.personality_2">
+            <img src="../assets/icons/prize.svg" alt="icono premio"/>
+            {{getMatch.personality_2}}</li>
+          <li v-if="getMatch.personality_joke">
+            <img src="../assets/icons/prize.svg" alt="icono premio"/>
+            {{getMatch.personality_joke}}</li>
+        </ul>
       </div>
-      <router-link to="/pawassociationcontact" tag="a" class="paw-button primary">¡Quiero adoptar!</router-link>
-    </div>
 
-    <div class="hobbies" v-if="getMatch.race">
-      <p>{{ displaySex }} {{getMatch.race}}</p>
-      <ul>
-        <li>
-          <img  src="../assets/icons/cake.svg" alt="icono tarta"/>
-          {{`${getMatch.age} años`}}
-        </li>
-        <li>
-          <img src="../assets/icons/measure.svg" alt="icono metro"/>
-          Tamaño {{displaySize}}
-        </li>
-        <li v-if="getMatch.personality_1">
-          <img  src="../assets/icons/prize.svg" alt="icono premio"/>
-          {{getMatch.personality_1}}</li>
-        <li v-if="getMatch.personality_2">
-          <img src="../assets/icons/prize.svg" alt="icono premio"/>
-          {{getMatch.personality_2}}</li>
-        <li v-if="getMatch.personality_joke">
-          <img src="../assets/icons/prize.svg" alt="icono premio"/>
-          {{getMatch.personality_joke}}</li>
-      </ul>
-    </div>
+      <div class="media" v-if="getMatch.images.length > 2">
+        <img v-for="image in getMatch.images.slice(1, 4)" :key="image.index" class="pet-img" :src="image" alt=""/>
+        <div class="view-more">
+          <img src="../assets/icons/camera.svg" alt="icono cámara"/>
+          <span v-if="getMatch.images.length > 4">ver más</span>
+        </div>
+      </div>
 
-    <div class="media" v-if="getMatch.images.length > 2">
-      <img v-for="image in getMatch.images.slice(1, 4)" :key="image.index" class="pet-img" :src="image" alt=""/>
-      <div class="view-more">
-        <img src="../assets/icons/camera.svg" alt="icono cámara"/>
-        <span v-if="getMatch.images.length > 4">ver más</span>
+      <div class="questions" v-if="getMatch.association">
+        <p>¿Tienes alguna duda sobre {{getMatch.name}}?</p>
+        <router-link to="" tag="a" class="paw-button secondary">Pregunta a la asociación</router-link>
+      </div>
+
+      <div class="association" v-if="getMatch.association">
+        <img :src="getMatch.association && getMatch.association.logo" :alt="getMatch.association.name" />
+        <div class="association-info">
+          <span class="name">{{getMatch.association.name}}</span>
+          <span class="subtitle">{{getMatch.association.description}}</span>
+        </div>
       </div>
     </div>
-
-    <div class="questions" v-if="getMatch.association">
-      <p>¿Tienes alguna duda sobre {{getMatch.name}}?</p>
-      <router-link to="" tag="a" class="paw-button secondary">Pregunta a la asociación</router-link>
-    </div>
-
-    <div class="association" v-if="getMatch.association">
-      <img :src="getMatch.association && getMatch.association.logo" :alt="getMatch.association.name" />
-      <div class="association-info">
-        <span class="name">{{getMatch.association.name}}</span>
-        <span class="subtitle">{{getMatch.association.description}}</span>
-      </div>
+    <div class="empty-card" v-else>
+      <p class="paw-title-primary">404</p>
+      <img src="../assets/img/404.gif" alt="Página no encontrada"/>
+      <p>Tenemos a nuestras mejores cabecitas peludas pensantes intentando descrubir qué ha pasado.</p>
+      <router-link to="/" tag="a" class="paw-button primary">Volver al inicio</router-link>
     </div>
   </div>
 </template>
@@ -206,5 +214,20 @@ export default {
     font-size: 14px;
     display: flex;
     align-items: center;
+  }
+  .empty-card {
+    margin: 0 10px;
+  }
+  .empty-card .paw-title-primary {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .empty-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .empty-card img{
+    padding: 1rem 2rem;
   }
 </style>

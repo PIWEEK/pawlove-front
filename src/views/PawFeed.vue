@@ -1,7 +1,12 @@
 <template>
   <div class="paw-feed">
-    <PawCTA/>
     <PawMatchCard :pet="follow1"/>
+    <div class="cta">
+      <p class="title">
+        ¿Te ayudamos a encontrar tu <br/> nuevo amigo peludo?
+      </p>
+      <router-link to="/pawonboarding" tag="a" class="paw-button primary">Encuentra mi mascota ideal</router-link>
+    </div>
     <PawSuccessCard
       title="¡Hank y Elisabeth ya están en casa juntos!"
       association="Asociación GATA"
@@ -11,6 +16,7 @@
       ownerName="Elisabeth"
       description="Hace dos días que Hank está en casa y ya es como si llevara toda la vida aquí. Se ha adueñado del sofá grande y mis hijos están ..."
       imageUrl="https://t1.uc.ltmcdn.com/images/8/5/4/img_por_que_se_le_caen_los_dientes_a_mi_gato_causas_y_soluciones_48458_300_150.jpg"/>
+    <PawTips/>
     <PawSuccessCard
       title="Salva se hace sitio en casa de Marta."
       association="Sociedad protectora de animales PETMA"
@@ -20,7 +26,6 @@
       ownerName="Marta"
       description="Salva llegó con mucho miedo pero ahora puede estar tranquilo porque aquí va a tener todo lo que le haga falta..."
       imageUrl="http://demo.isotype.blue/metagrid/wp-content/uploads/sites/20/2015/05/girl-1160441_1920-1-960x440.jpg"/>
-    <PawTips/>
     <PawMatchCard :pet="follow2"/>
   </div>
 </template>
@@ -76,5 +81,17 @@ export default {
   }
   .paw-success-card, .paw-match-group, .paw-tips {
     margin-bottom: 1.5rem;
+  }
+  .cta .title {
+    color: #E4643C;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 1rem;
+  }
+  .cta .paw-button {
+    margin-bottom: 3rem;
   }
 </style>

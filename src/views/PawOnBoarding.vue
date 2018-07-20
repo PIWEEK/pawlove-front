@@ -25,8 +25,8 @@
           alt="Icono raton"/>
         </div>
         <p>{{currentQuestion}} de {{getQuestionsList.length}}</p>
-        <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">Siguiente</button>
-        <button type="button" v-if="isLastQuestion" @click="handleSubmit">Enviar</button>
+        <button type="button" v-if="!isLastQuestion" @click="handleNext" :disabled="nextDisabled">siguiente</button>
+        <button type="button" v-if="isLastQuestion" @click="handleSubmit">enviar</button>
       </div>
     </form>
   </div>
@@ -49,7 +49,7 @@ const matchPhoto = {
   personality_1: null,
   personality_2: null,
   personality_joke: null,
-  images: ['https://lh5.googleusercontent.com/b96TjURUQbgpAdKlglGJFn29wUN4EuGpbmS-hsxWcWDv8r24E7GHU4xZroo-WAtwU68AHO-7QleNDf2t2w2T=w1916-h957-rw'],
+  images: ['https://lh6.googleusercontent.com/ZPMuWDVj0qoQHmqX2q4Zb3uf7GFq3jUdoLDrE7-2OMKx-_nlDdKd-atBfL9NqGX6NOiUknDz7ZJ9jQFYOHAk=w3430-h6093-rw'],
   association: null,
   adopted: false
 }
@@ -70,10 +70,10 @@ const matchPlant = {
   personality_2: 'Cazador de grandes antílopes',
   personality_joke: null,
   images: [
-    'https://lh5.googleusercontent.com/zzpOT24gIV3jpiOfVN983kQa1_O98KulK248fzXNipahavxf1mWyWOfb9JHYpxxWiaCHmt0YCJhbdrA9_LEC=w1916-h957-rw',
-    'https://lh4.googleusercontent.com/9KVvrrqe7zRNuRWf8F0WWkNLZy0Yr8BeBFlSYOTsoHRYU1E6prswcO1JFXMngpJOMxnTHYL4COTUxf76rDyK=w1916-h957-rw',
-    'https://lh5.googleusercontent.com/l-d_UPGWoNRA5hm6kCFfa4J7XJ9-1Povft6t3iOQObhiYD5p9BDDgPpUY69xaNZDZilGWO3opudEYVj3a9P_=w1916-h957-rw',
-    'https://lh4.googleusercontent.com/lL_UfZ7WIuXU-VGEavyvjiRmoRKl56SpyQ9uSpqktbxHXyR04RnMAYosk4ABhDbVWOFTSuo9qlna3vHvRobk=w1916-h957-rw'
+    'https://lh4.googleusercontent.com/So-MxWpcOYljgBx3v2Xpi_qnY8h65VNjxSk-rf-_lJeGYrQOpHHncubIv_Zhq7WKvPSQ1W17B2s_VPlZZH2M=w3430-h6093-rw',
+    'https://lh6.googleusercontent.com/luFWYd0pe2GweLZNnBmkmWj0F30fb2ZYFLbFasTY2L2GzzRYsAlAqRmB3a6AwKk1oBwk7vX2KYli7M8zfQnU=w3430-h6093-rw',
+    'https://lh4.googleusercontent.com/Div4nLa2O9qRudAR8GNcTTGxRSdvRl0h0daVObzCSOaZQDrbhKIEtkqN_RbeQFGwBCNjoOYVjwSmqsVc7fDQ=w1855-h990-rw',
+    'https://lh3.googleusercontent.com/wqck30aCX8naRpdVrqC4hw6ChDwvb0qBzJ6Zv62QIsAXnZRJ2WclafrCIaK0MLYkqFsf1t6YR44nsh6ae5aj=w1855-h990-rw'
   ],
   association: null,
   adopted: false
@@ -158,7 +158,7 @@ export default {
 .question {
   font-size: 20px;
   text-align: center;
-  margin: 2rem 1rem 3rem;
+  margin: 2rem 1rem 1.5rem;
   color: #4F5859;
   min-height: 3rem;
 }
@@ -182,6 +182,7 @@ export default {
   padding: 1.75rem 0.75rem;
   font-size: 14px;
   font-weight: 600;
+  width: 85px;
 }
 .track-bar button:hover {
   cursor: pointer;
@@ -225,7 +226,7 @@ fieldset.active {
 .answer-label {
   display: block;
   background-color: #7CC4BA;
-  padding: 1rem 3.5rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   color: #ffffff;
   border-top: 1px solid #73B6AD ;
 }
@@ -245,6 +246,7 @@ fieldset.active {
 .icon {
   position: absolute;
   top: -60px;
+  transition: left ease-out 0.5s;
 }
 .icon.icon-position-1 {
   left: 8%;

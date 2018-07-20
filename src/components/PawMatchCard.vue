@@ -30,7 +30,7 @@ export default {
 <style scoped>
   .paw-match-group {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
   .paw-match-card {
     margin: 0.25rem 0.25rem 1rem 0.25rem;

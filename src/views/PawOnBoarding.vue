@@ -43,7 +43,7 @@ const matchPhoto = {
     'no un ser vivo',
     'tímido'
   ],
-  description: 'Es básicamente un papel pero es de buena calidad.\n\rNo obstante requiere de cuidados básicos, como no mojarla o quemarla, que igual pueden ser demasiado para ti. ',
+  description: 'Es básicamente un papel pero es de buena calidad.\r\nNo obstante requiere de cuidados básicos, como no mojarla o quemarla, que igual pueden ser demasiado para ti. ',
   age: null,
   size: null,
   personality_1: null,
@@ -63,7 +63,7 @@ const matchPlant = {
     'dominante',
     'jugueton'
   ],
-  description: 'Agradece los cuidados mínimos y le encanta hacer la fotosíntesis durante todo el día.\n\rPuede acumular una cantidad de agua tremenda. No le importa estar en termperaturas muy altas y secas. Incluso parece que le gusta.',
+  description: 'Agradece los cuidados mínimos y le encanta hacer la fotosíntesis durante todo el día.\r\nPuede acumular una cantidad de agua tremenda. No le importa estar en termperaturas muy altas y secas. Incluso parece que le gusta.',
   age: 2,
   size: 'P',
   personality_1: 'Superviviente de Aquella Semana',

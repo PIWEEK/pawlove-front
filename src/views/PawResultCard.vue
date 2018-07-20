@@ -11,11 +11,7 @@
         <div class="pet-tags">
           <span v-for="tag in getMatch.tags" :key="tag.index" class="tag">{{tag}}</span>
         </div>
-        <div class="pet-description">
-          <p>
-            {{getMatch.description}}
-          </p>
-        </div>
+        <div class="pet-description" v-html="displayDescription"></div>
         <router-link to="/pawassociationcontact" tag="a" class="paw-button primary">¡Quiero adoptar!</router-link>
       </div>
 
@@ -89,6 +85,9 @@ export default {
       if (this.getMatch.size === 'H') return 'Hembra'
       if (this.getMatch.size === 'M') return 'Macho'
       return ''
+    },
+    displayDescription () {
+      return `${this.getMatch.description.replace(/(?:\r\n|\r|\n)/g, '<br /><br />')}`
     },
     displaySize () {
       const size = {
@@ -176,7 +175,7 @@ export default {
     color: #ffffff;
     font-size: 12px;
   }
-  .pet-description p{
+  .pet-description {
     line-height: 20px;
     margin-bottom: 1.5rem;
     color: #4F5859;

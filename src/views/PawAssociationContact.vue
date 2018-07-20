@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="paw-association-contact" v-if="getMatch">
+    <div class="paw-association-contact" v-if="getMatch.association">
       <PawProfileImage
         :imgUrl="getMatch.images[0]"
         :showFollowLink="false"
